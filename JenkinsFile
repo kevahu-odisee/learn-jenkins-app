@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Docker initialize') {
             steps {
-                sh 'docker run --rm --name learn-jenkins-app node:18-alpine sleep infinity'
+                sh 'docker run --rm -t -d --name learn-jenkins-app node:18-alpine'
             }
         }
         stage('Build') {

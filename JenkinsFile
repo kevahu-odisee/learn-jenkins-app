@@ -22,9 +22,9 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            //sh 'docker stop learn-jenkins-app'
-        }
-    }
+    // post {
+    //     always {
+    //         sh 'docker stop learn-jenkins-app'
+    //     }
+    // }
 }

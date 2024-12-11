@@ -1,10 +1,12 @@
 pipeline {
     agent any
 
+
+
     stages {
         stage('Docker initialize') {
             steps {
-                sh 'docker run --rm -t -d -e CI=true --name learn-jenkins-app node:alpine'
+                sh 'docker run --rm -t -d -e CI=true -e WEB_DEPLOY_TOKEN=' + credentials('web-deploy-token') + ' --name learn-jenkins-app node:alpine'
                 sh 'docker cp ./. learn-jenkins-app:/'
             }
         }

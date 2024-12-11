@@ -34,11 +34,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh '''
-                    docker exec learn-jenkins-app find build/ -name \'*.*\' | sed \'s/build\\///\' | while read FILE
-                    docker exec learn-jenkins-app do wget --post-file="build/$FILE" --header "Token: 22adee63-83f2-45ab-a432-412bf21b13d9" "https://test.kevahu.net/$FILE"
-                    docker exec learn-jenkins-app done
-                '''
+                sh 'docker exec learn-jenkins-app sh deploy.sh'
             }
         }
     }

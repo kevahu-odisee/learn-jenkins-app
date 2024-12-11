@@ -11,11 +11,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    docker exec -w learn-jenkins-app learn-jenkins-app ls -la
-                    docker exec -w learn-jenkins-app learn-jenkins-app node --version
-                    docker exec -w learn-jenkins-app learn-jenkins-app npm --version
-                    docker exec -w learn-jenkins-app learn-jenkins-app npm ci
-                    docker exec -w learn-jenkins-app learn-jenkins-app npm run build
+                    docker exec -w /learn-jenkins-app learn-jenkins-app ls -la
+                    docker exec -w /learn-jenkins-app learn-jenkins-app node --version
+                    docker exec -w /learn-jenkins-app learn-jenkins-app npm --version
+                    docker exec -w /learn-jenkins-app learn-jenkins-app npm ci
+                    docker exec -w /learn-jenkins-app learn-jenkins-app npm run build
                 '''
             }
         }

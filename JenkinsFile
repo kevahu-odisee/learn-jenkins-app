@@ -17,13 +17,6 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
-            steps {
-                sh '''
-                    docker exec learn-jenkins-app npm test
-                '''
-            }
-        }
         stage('Build') {
             steps {
                 sh '''
@@ -34,6 +27,7 @@ pipeline {
         stage('Post build test') {
             steps {
                 sh '''
+                    docker exec learn-jenkins-app npm test
                     docker exec learn-jenkins-app test -f build/index.html
                 '''
             }

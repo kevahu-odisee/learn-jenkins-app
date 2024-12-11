@@ -2,9 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('With Docker') {
+        stage('Docker initialize') {
             steps {
-                sh 'docker run --rm --name my-node-container node:18-alpine npm --version'
+                sh 'docker run --rm --name learn-jenkins-app node:18-alpine sleep infinity'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+                    docker exec learn-jenkins-app ls -la
+                    docker exec learn-jenkins-app node --version
+                    docker exec learn-jenkins-app npm --version
+                    docker exec learn-jenkins-app npm ci
+                    docker exec learn-jenkins-app npm run build
+                '''
+            }
+        }
+        stage('Docker finalize') {
+            steps {
+                sh 'docker stop learn-jenkins-app'
             }
         }
     }

@@ -38,11 +38,11 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         //sh 'docker cp learn-jenkins-app:/test-results/junit.xml ./'
-    //         //junit 'junit.xml'
-    //         sh 'docker stop learn-jenkins-app'
-    //     }
-    // }
+    post {
+        always {
+            //sh 'docker cp learn-jenkins-app:/test-results/junit.xml ./'
+            //junit 'junit.xml'
+            sh 'docker stop learn-jenkins-app'
+        }
+    }
 }

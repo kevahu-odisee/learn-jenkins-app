@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('With Docker') {
+            steps {
+                sh 'docker run --rm --name my-node-container node:18-alpine npm --version'
+            }
+        }
+    }
+}

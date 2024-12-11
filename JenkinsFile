@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Docker initialize') {
             steps {
-                sh 'docker run --rm -t -d -e CI=true --name learn-jenkins-app node:18-alpine'
+                sh 'docker run --rm -t -d -e CI=true --name learn-jenkins-app node:alpine'
                 sh 'docker cp ./. learn-jenkins-app:/'
             }
         }

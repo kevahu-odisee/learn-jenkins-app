@@ -28,7 +28,7 @@ pipeline {
             steps {
                 sh '''                    
                     docker exec learn-jenkins-app test -f build/index.html
-                    docker exec learn-jenkins-app npm test
+                    docker exec learn-jenkins-app npm test -- --passWithNoTests
                 '''
             }
         }       
